@@ -1,0 +1,50 @@
+.button {
+  max-width: 150px;
+  display: block;
+  padding: 8px 20px;
+  margin-top: auto;
+  border-radius: 8px;
+  cursor: pointer;
+  border-color: #0770f1;
+  font-family: inherit;
+  font-weight: bold;
+}
+
+.info {
+  padding-left: 20px;
+  padding-right: 20px;
+  box-shadow: 0px 5px 5px 0px rgba(173, 164, 173, 0.75);
+  display: flex;
+  padding-bottom: 20px;
+}
+.about {
+  display: flex;
+  flex-direction: column;
+}
+.poster {
+  float: left;
+  margin-right: 30px;
+}
+
+.moreinfo {
+  margin-top: 20px;
+  padding-bottom: 20px;
+  box-shadow: 0px 5px 5px 0px rgba(173, 164, 173, 0.75);
+  display: flex;
+  flex-direction: column;
+  padding-left: 20px;
+  line-height: 1.5;
+}
+
+.link {
+  font-size: 18px;
+  text-decoration: none;
+  font-weight: bold;
+  color: #747272;
+}
+.link:global(.active) {
+  color: #0770f1;
+}
+li {
+  list-style-type: none;
+}
