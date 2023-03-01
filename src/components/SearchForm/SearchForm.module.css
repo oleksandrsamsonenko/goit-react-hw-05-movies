@@ -1,0 +1,24 @@
+.form {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.button {
+  display: block;
+  max-width: 150px;
+  padding: 8px 20px;
+  margin-top: auto;
+  border-radius: 8px;
+  cursor: pointer;
+  border-color: #0770f1;
+  font-family: inherit;
+  font-weight: bold;
+}
+
+.input {
+  display: block;
+  padding: 8px 10px;
+  border-color: #0770f1;
+  border-radius: 8px;
+}

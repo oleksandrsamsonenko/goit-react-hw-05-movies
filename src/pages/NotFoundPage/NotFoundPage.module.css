@@ -1,0 +1,25 @@
+.notfound {
+  height: calc(100vh - 95px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  flex-direction: column;
+}
+
+.text {
+  display: block;
+}
+
+.errorIMG {
+  width: 25vw;
+}
+
+.link {
+  color: #0770f1;
+  transition: all 300ms;
+}
+
+.link:hover {
+  transform: scale(1.03);
+}

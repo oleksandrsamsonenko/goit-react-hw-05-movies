@@ -1,16 +1,16 @@
 import { getMovies } from 'services/movieAPI';
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import style from './HomePage.module.css';
 
-export const HomePage = () => {
+const HomePage = () => {
   const [state, setState] = useState([]);
-
+  const location = useLocation();
   useEffect(() => {
     const getMoviesList = async () => {
       try {
         const { data } = await getMovies();
-        console.log(data);
+        // console.log(data);
         setState(data.results);
       } catch (error) {
         console.log(error);
@@ -18,11 +18,11 @@ export const HomePage = () => {
     };
     getMoviesList();
   }, []);
-  console.log(state);
+  // console.log(state);
 
   const elements = state.map(element => (
     <li className={style.movie} key={element.id}>
-      <Link to={`/moviespage/${element.id}`}>
+      <Link to={`/moviespage/${element.id}`} state={location}>
         <img
           className={style.poster}
           src={`https://image.tmdb.org/t/p/w500${element.poster_path}`}
@@ -39,3 +39,5 @@ export const HomePage = () => {
     </>
   );
 };
+
+export default HomePage;

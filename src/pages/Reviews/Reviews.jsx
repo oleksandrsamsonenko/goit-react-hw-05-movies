@@ -3,15 +3,15 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import style from './Reviews.module.css';
 
-export const Reviews = () => {
+const Reviews = () => {
   const { movieID } = useParams();
-  console.log(movieID);
+  //   console.log(movieID);
   const [state, setState] = useState([]);
   useEffect(() => {
     const getReview = async () => {
       try {
         const { data } = await getReviewsByID(movieID);
-        console.log(`RESPONSE`, data.results);
+        // console.log(`RESPONSE`, data.results);
         setState(data.results);
       } catch (error) {
         console.log(error);
@@ -20,7 +20,7 @@ export const Reviews = () => {
     getReview();
   }, [movieID]);
 
-  console.log(`STATE`, state);
+  //   console.log(`STATE`, state);
   const elements =
     state.length !== 0 ? (
       state.map((element, index) => {
@@ -38,7 +38,7 @@ export const Reviews = () => {
         );
       })
     ) : (
-      <p>Sorry, no reviews so far</p>
+      <p>Sorry, no reviews for this movie so far</p>
     );
   return (
     <>
@@ -46,3 +46,5 @@ export const Reviews = () => {
     </>
   );
 };
+
+export default Reviews;

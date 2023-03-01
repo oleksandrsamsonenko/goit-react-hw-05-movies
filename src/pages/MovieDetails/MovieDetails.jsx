@@ -1,13 +1,27 @@
-import { useState, useEffect } from 'react';
-import { useParams, useNavigate, Outlet, NavLink } from 'react-router-dom';
+import { useState, useEffect, useRef } from 'react';
+import {
+  useParams,
+  useNavigate,
+  useLocation,
+  Outlet,
+  NavLink,
+} from 'react-router-dom';
 import { getMovieByID } from 'services/movieAPI';
 import style from './MovieDetails.module.css';
 
-export const MovieDetails = () => {
+const MovieDetails = () => {
   const [state, setState] = useState({});
-
   const { movieID } = useParams();
+
   const navigate = useNavigate();
+  const location = useLocation();
+  const refLocation = useRef(location);
+
+  const from =
+    `${refLocation.current.state?.pathname}${refLocation.current.state?.search}` ||
+    '/';
+
+  //   console.log(`DETAILS LOCATION`, location);
 
   useEffect(() => {
     const getMovie = async () => {
@@ -61,7 +75,7 @@ export const MovieDetails = () => {
           <button
             className={style.button}
             type="button"
-            onClick={() => navigate('/')}
+            onClick={() => navigate(from)}
           >
             Go back
           </button>
@@ -70,12 +84,12 @@ export const MovieDetails = () => {
       <div className={style.moreinfo}>
         <h3>Additional information</h3>
         <li>
-          <NavLink className={style.link} to={`/moviespage/${movieID}/cast`}>
+          <NavLink className={style.link} to={`cast`}>
             Cast
           </NavLink>
         </li>
         <li>
-          <NavLink className={style.link} to={`/moviespage/${movieID}/reviews`}>
+          <NavLink className={style.link} to={`reviews`}>
             Reviews
           </NavLink>
         </li>
@@ -84,3 +98,5 @@ export const MovieDetails = () => {
     </>
   );
 };
+
+export default MovieDetails;

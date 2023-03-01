@@ -4,14 +4,14 @@ import { useEffect, useState } from 'react';
 import style from './Cast.module.css';
 import placeholder from '../../images/placeholder.jpg';
 
-export const Cast = () => {
+const Cast = () => {
   const [state, setState] = useState([]);
   const { movieID } = useParams();
   useEffect(() => {
     const getCastInfo = async () => {
       try {
         const response = await getCastByID(movieID);
-        console.log(response.data.cast);
+        // console.log(response.data.cast);
         setState(response.data.cast);
       } catch (error) {
         console.log(error);
@@ -36,3 +36,5 @@ export const Cast = () => {
   });
   return <ul className={style.castlist}>{elements}</ul>;
 };
+
+export default Cast;

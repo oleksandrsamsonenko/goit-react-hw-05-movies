@@ -2,11 +2,13 @@
   line-height: 1.5;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+
   gap: 25px;
   padding: 0 25px;
 }
 
 .poster {
+  min-height: 200px;
   width: 100%;
 }
 
@@ -32,6 +34,5 @@
 }
 
 .movie:hover {
-  /* color: blue; */
   transform: scale(1.03);
 }
