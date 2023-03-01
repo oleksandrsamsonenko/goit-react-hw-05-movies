@@ -47,7 +47,9 @@ const MovieDetails = () => {
           poster_path,
           genresInfo,
         });
-      } catch (error) {}
+      } catch (error) {
+        console.log(error);
+      }
     };
     getMovie();
   }, [movieID]);

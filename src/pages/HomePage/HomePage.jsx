@@ -5,6 +5,7 @@ import style from './HomePage.module.css';
 
 const HomePage = () => {
   const [state, setState] = useState([]);
+  const [error, setError] = useState('');
   const location = useLocation();
   useEffect(() => {
     const getMoviesList = async () => {
@@ -14,6 +15,7 @@ const HomePage = () => {
         setState(data.results);
       } catch (error) {
         console.log(error);
+        setError(error.message);
       }
     };
     getMoviesList();
@@ -35,7 +37,14 @@ const HomePage = () => {
   ));
   return (
     <>
-      <ul className={style.list}>{elements}</ul>
+      {error ? (
+        <p className={style.error}>
+          {error} <br />
+          Something gone wrong, try again later...
+        </p>
+      ) : (
+        <ul className={style.list}>{elements}</ul>
+      )}
     </>
   );
 };

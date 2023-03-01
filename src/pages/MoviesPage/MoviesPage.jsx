@@ -6,6 +6,8 @@ import style from '../HomePage/HomePage.module.css';
 
 const MoviesPage = () => {
   const [state, setState] = useState([]);
+  const [error, setError] = useState('');
+
   const location = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -18,6 +20,7 @@ const MoviesPage = () => {
         setState(data.results);
       } catch (error) {
         console.log(error);
+        setError(error.message);
       }
     };
     if (search) {
@@ -48,7 +51,14 @@ const MoviesPage = () => {
   return (
     <>
       <SearchForm onSubmit={getSearchValue} />
-      <ul className={style.list}>{elements}</ul>
+      {error ? (
+        <p className={style.error}>
+          {error} <br />
+          Something gone wrong, try again later...
+        </p>
+      ) : (
+        <ul className={style.list}>{elements}</ul>
+      )}
     </>
   );
 };
